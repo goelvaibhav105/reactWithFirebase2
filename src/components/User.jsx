@@ -18,7 +18,7 @@ export default function User() {
       <header className="text-white-600 body-font bg-white">
   <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <a className="flex title-font font-medium items-center align-center text-white mb-4 md:mb-0">
-      <span className="ml-3 text-2xl text-black font-bold">Welcome </span>
+      {localStorage && localStorage.getItem("profilePic") ? <img style={{height:40}} src={localStorage.getItem("profilePic")} />: <span className="ml-3 text-2xl text-black font-bold">Welcome </span>}
       <span className="ml-3 text-xl text-yellow-600"> {user?.email} </span>
     </a>
     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -27,7 +27,7 @@ export default function User() {
       <a className="mr-5 hover:text-white">Third Link</a>
       <a className="mr-5 hover:text-white">Fourth Link</a>
     </nav>
-    <button onClick={() => signOut(firebaseAuth)} className="inline-flex items-center bg-yellow-500 border-0 py-1 px-3 focus:outline-none text-black hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+    <button onClick={() => {signOut(firebaseAuth); localStorage.clear()}} className="inline-flex items-center bg-yellow-500 border-0 py-1 px-3 focus:outline-none text-black hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>
